@@ -11,9 +11,9 @@ function displayForm() {
 let myLibrary = [];
 
 function Book(title, author, pages) {
-    this.title = title
-    this.author = author
-    this.pages = pages
+    this.Title = title
+    this.Author = author
+    this.Pages = pages
 }
 
 const addBookBtn = document.querySelector("#addBookBtn");
@@ -34,10 +34,17 @@ function addBookToLibrary(event) {
     cardContainer.innerHTML = '';   
     myLibrary.forEach((newBook) => {
         let card = document.createElement('div');
-        card.classList.add("card");
-        card.innerHTML = newBook.title + newBook.author;
-        console.log(card);
-        cardContainer.appendChild(card);        
+        card.classList.add("card");        
+        cardContainer.appendChild(card); 
+        for (let key in newBook) {
+            let bookInfo = document.createElement('div');
+            bookInfo.classList.add("bookInfo");
+            bookInfo.innerHTML = `${key}: ${newBook[key]} `;
+            console.log(bookInfo);
+            card.appendChild(bookInfo);
+        }
+        
+
     });
 }
 

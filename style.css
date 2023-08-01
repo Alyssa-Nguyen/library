@@ -14,8 +14,15 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: darkslategray;
 }
+
+#book-btn {
+    padding: 0.75rem;
+    margin: 1rem;
+
+}
+
 
 #book-form {
     padding: 2rem;
@@ -24,15 +31,26 @@ body {
 }
 
 .card-container {
-    padding: 2rem;
+    padding: 1rem;
     background-color: white;
+    width: 80%;
+    height: 80vh;
+    display: flex;
     
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 10rem;
     padding: 1rem;
     border: 1px solid black;
     background-color: darksalmon;
     margin: 2rem;
 
+}
+
+.bookInfo {
+    margin-bottom: 0.5rem;
 }
