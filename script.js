@@ -31,18 +31,23 @@ function addBookToLibrary(event) {
 
     let newBook = new Book(title, author, pages);               //creating a new book object by referencing above value from the form  
     myLibrary.push(newBook);                                    // pushing the new book object into myLibrary array                              
+    console.log(myLibrary);
     cardContainer.innerHTML = '';
 
     for (let i=0; i<myLibrary.length; i++) {
         let card = document.createElement('div');
-        card.classList.add("card");        
+        card.classList.add("card");
+
+        let indexNum = myLibrary.indexOf(myLibrary[i]);        // create index number               
+        
+        card.dataset.index = indexNum;                         // add a data-index attribute that correspond to the index of the array      
+        //console.log(card.dataset.index);
         cardContainer.appendChild(card); 
+
         let bookTitle = document.createElement('div');
         bookTitle.classList.add("bookTitle"); 
-        let cardTitle = myLibrary[i].title;
-        console.log(cardTitle);    
+        let cardTitle = myLibrary[i].title;          
         bookTitle.innerHTML = cardTitle;
-        console.log(bookTitle);
         card.appendChild(bookTitle); 
         let bookAuthor = document.createElement('div');
         bookAuthor.classList.add("bookInfo");
@@ -53,13 +58,18 @@ function addBookToLibrary(event) {
         bookPages.classList.add("bookInfo");
         let cardPages = `${myLibrary[i].pages} pages`;
         bookPages.innerHTML = cardPages;
-        card.appendChild(bookPages);       
+        card.appendChild(bookPages); 
+
         let deleteBook = document.createElement('button');
         deleteBook.innerHTML = "Delete";
         card.appendChild(deleteBook);
-        deleteBook.onclick = function () {
-            delete myLibrary[i];
-        } 
+        
+        deleteBook.onclick = function () {            
+            card.remove(); 
+            myLibrary.splice(indexNum, 1);
+            console.log(myLibrary);        
+        }
+        
     }   
     
 }
