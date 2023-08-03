@@ -11,9 +11,9 @@ function displayForm() {
 let myLibrary = [];
 
 function Book(title, author, pages) {
-    this.Title = title
-    this.Author = author
-    this.Pages = pages
+    this.title = title
+    this.author = author
+    this.pages = pages
 }
 
 const addBookBtn = document.querySelector("#addBookBtn");
@@ -25,29 +25,61 @@ addBookBtn.addEventListener('click', addBookToLibrary);
 
 function addBookToLibrary(event) {
     event.preventDefault();
-    let title = document.querySelector("#title").value;
+    let title = document.querySelector("#title").value;         //getting value from the new book form and assigning them here
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
-    let newBook = new Book(title, author, pages);    
-    myLibrary.push(newBook);
-    console.log(myLibrary);
-    cardContainer.innerHTML = '';   
-    myLibrary.forEach((newBook) => {
+
+    let newBook = new Book(title, author, pages);               //creating a new book object by referencing above value from the form  
+    myLibrary.push(newBook);                                    // pushing the new book object into myLibrary array                              
+    cardContainer.innerHTML = '';
+
+    for (let i=0; i<myLibrary.length; i++) {
         let card = document.createElement('div');
         card.classList.add("card");        
         cardContainer.appendChild(card); 
-        for (let key in newBook) {
-            let bookInfo = document.createElement('div');
-            bookInfo.classList.add("bookInfo");
-            bookInfo.innerHTML = `${key}: ${newBook[key]} `;
-            console.log(bookInfo);
-            card.appendChild(bookInfo);
-        }
-        
-
-    });
+        let bookTitle = document.createElement('div');
+        bookTitle.classList.add("bookTitle"); 
+        let cardTitle = myLibrary[i].title;
+        console.log(cardTitle);    
+        bookTitle.innerHTML = cardTitle;
+        console.log(bookTitle);
+        card.appendChild(bookTitle); 
+        let bookAuthor = document.createElement('div');
+        bookAuthor.classList.add("bookInfo");
+        let cardAuthor = `By ${myLibrary[i].author}`;
+        bookAuthor.innerHTML = cardAuthor;
+        card.appendChild(bookAuthor); 
+        let bookPages = document.createElement('div');
+        bookPages.classList.add("bookInfo");
+        let cardPages = `${myLibrary[i].pages} pages`;
+        bookPages.innerHTML = cardPages;
+        card.appendChild(bookPages);       
+        let deleteBook = document.createElement('button');
+        deleteBook.innerHTML = "Delete";
+        card.appendChild(deleteBook);
+        deleteBook.onclick = function () {
+            delete myLibrary[i];
+        } 
+    }   
+    
 }
 
+
+/*
+myLibrary.forEach((newBook) => {
+    let card = document.createElement('div');
+    card.classList.add("card");        
+    cardContainer.appendChild(card); 
+    for (let key in newBook) {
+        let bookInfo = document.createElement('div');
+        bookInfo.classList.add("bookInfo");
+        bookInfo.innerHTML = `${key}: ${newBook[key]} `;
+        console.log(bookInfo);
+        card.appendChild(bookInfo);
+    }      
+
+});
+*/
 
 
 

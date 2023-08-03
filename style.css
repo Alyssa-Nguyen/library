@@ -30,12 +30,15 @@ body {
     background-color: aquamarine;
 }
 
-.card-container {
-    padding: 1rem;
+.card-container {    
     background-color: white;
     width: 80%;
     height: 80vh;
     display: flex;
+    flex-wrap: wrap;    
+    align-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
     
 }
 
@@ -44,13 +47,18 @@ body {
     flex-direction: column;
     height: 10rem;
     width: 10rem;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 1px solid black;
-    background-color: darksalmon;
-    margin: 2rem;
+    background-color: darksalmon;  
 
 }
 
+.bookTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
 .bookInfo {
+    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
