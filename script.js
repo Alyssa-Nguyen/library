@@ -1,11 +1,20 @@
 
 const newBookBtn = document.querySelector('#book-btn');
+const closeForm = document.querySelector('#close-form');
+newBookBtn.style.cursor = "pointer";
+closeForm.style.cursor = "pointer";
 
 // click New Book button to open form
 newBookBtn.addEventListener('click', displayForm);
 
 function displayForm() {
-    document.querySelector('#book-form').style.display = "block";
+    document.querySelector('.book-form').style.display = "block";
+}
+// click close to close the new book form
+closeForm.addEventListener('click', closeBookForm);
+
+function closeBookForm() {
+    document.querySelector('.book-form').style.display = "none";
 }
 
 let myLibrary = [];
@@ -61,6 +70,7 @@ function addBookToLibrary(event) {
         card.appendChild(bookPages); 
 
         let deleteBook = document.createElement('button');
+        deleteBook.classList.add("deleteBook");
         deleteBook.innerHTML = "Delete";
         card.appendChild(deleteBook);
         
@@ -74,22 +84,6 @@ function addBookToLibrary(event) {
     
 }
 
-
-/*
-myLibrary.forEach((newBook) => {
-    let card = document.createElement('div');
-    card.classList.add("card");        
-    cardContainer.appendChild(card); 
-    for (let key in newBook) {
-        let bookInfo = document.createElement('div');
-        bookInfo.classList.add("bookInfo");
-        bookInfo.innerHTML = `${key}: ${newBook[key]} `;
-        console.log(bookInfo);
-        card.appendChild(bookInfo);
-    }      
-
-});
-*/
 
 
 
