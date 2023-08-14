@@ -69,6 +69,22 @@ function addBookToLibrary(event) {
         bookPages.innerHTML = cardPages;
         card.appendChild(bookPages); 
 
+        let readDiv = document.createElement('div')
+        readDiv.classList.add('readDiv');
+        let readLabel = document.createElement('label');
+        let readInput = document.createElement('input');
+        readInput.setAttribute('type','checkbox');        
+        readLabel.classList.add('switch');
+        let readSpan = document.createElement('span');
+        readSpan.classList.add('slider', 'round'); 
+        readDiv.innerHTML = "Read "; 
+
+        
+        readLabel.appendChild(readInput);
+        readLabel.appendChild(readSpan);
+        readDiv.appendChild(readLabel);
+        card.appendChild(readDiv);
+
         let deleteBook = document.createElement('button');
         deleteBook.classList.add("deleteBook");
         deleteBook.innerHTML = "Delete";
